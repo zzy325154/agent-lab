@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>简历 - Agent 开发</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
+    font-size: 9pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 10mm 13mm;
+    background: #fff;
+  }
+  .header { border-bottom: 2px solid #1a4d8f; padding-bottom: 7px; margin-bottom: 11px; }
+  .name-row { display: flex; align-items: baseline; justify-content: space-between; }
+  .name { font-size: 20pt; font-weight: 700; letter-spacing: 2px; color: #1a4d8f; }
+  .target { font-size: 10pt; color: #555; letter-spacing: 1px; }
+  .contact { margin-top: 5px; font-size: 9.5pt; color: #333; }
+  .contact span { margin-right: 16px; }
+  .contact .label { color: #888; }
+
+  .section { margin-bottom: 11px; }
+  .section-title {
+    font-size: 11.5pt; font-weight: 700; color: #1a4d8f;
+    border-left: 3px solid #1a4d8f; padding-left: 7px;
+    margin-bottom: 6px; letter-spacing: 1px;
+  }
+
+  .item { margin-bottom: 7px; }
+  .item:last-child { margin-bottom: 0; }
+  .item-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .item-title { font-weight: 700; font-size: 10.5pt; }
+  .item-sub { color: #444; font-size: 10pt; }
+  .item-date { color: #666; font-size: 9.5pt; white-space: nowrap; }
+  .tech {
+    font-size: 9.5pt; color: #1a4d8f;
+    background: #eef3fa; display: inline-block;
+    padding: 1px 6px; border-radius: 3px; margin: 3px 0 3px;
+    line-height: 1.5;
+  }
+  ul { margin: 3px 0 0 0; padding-left: 16px; }
+  li { margin-bottom: 2px; font-size: 10pt; }
+  li::marker { color: #1a4d8f; }
+  b { color: #1a4d8f; font-weight: 700; }
+  .skill-line { margin-bottom: 3px; font-size: 10pt; }
+  .skill-line .k { display: inline-block; min-width: 82px; font-weight: 700; color: #333; }
+  .placeholder { background: #fff3cd; padding: 0 3px; border-radius: 2px; }
+  .note { color: #999; font-size: 8.5pt; font-style: italic; }
+  .match {
+    background: #eaf5ea; border-left: 3px solid #2e7d32;
+    padding: 4px 8px; margin: 4px 0 6px; font-size: 9pt; line-height: 1.5;
+  }
+  .match b { color: #2e7d32; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="name-row">
+    <div class="name">张朱宇</div>
+    <div class="target">求职意向：AI Agent 开发工程师</div>
+  </div>
+  <div class="contact">
+    <span><span class="label">电话 </span>18221179721</span>
+    <span><span class="label">邮箱 </span>3054038169@qq.com</span>
+    <span><span class="label">Github </span>github.com/zzy325154</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">教育背景</div>
+  <div class="item">
+    <div class="item-head">
+      <div class="item-title">吉利学院 &nbsp;<span class="item-sub">计算机科学与技术（本科）</span></div>
+      <div class="item-date">2023.09 – 2027.06</div>
+    </div>
+    <ul>
+      <li>相关课程：数据结构与算法、计算机网络、操作系统、数据库原理、Python 程序设计</li>
+      <li>成绩：<span class="placeholder">【GPA / 专业排名，没有可删掉此行】</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">项目经历</div>
+  <div class="match">
+    <b>与「智能体算法工程师」岗位的对应：</b>岗位要求 Agent 闭环设计、工具调用优化、RAG 与 Agent 融合、Agent 评测体系（成功率/响应延迟/成本）——
+    本项目均已实践并给出量化结果：工具调用成功率 71.7%→95.8%、检索命中率 58.3%→100%、首字节响应 231ms、上下文 token 降低 33.4%。
+  </div>
+  <div class="item">
+    <div class="item-head">
+      <div class="item-title">智能体（Agent）系统：工具调用编排 + RAG 检索 &nbsp;<span class="note">（个人项目）</span></div>
+      <div class="item-date">2026.xx – 2026.xx</div>
+    </div>
+    <div class="tech">Python / MCP 协议 / Function Calling / ReAct / RAG / DeepSeek API / asyncio / FastAPI / SSE</div>
+    <ul>
+      <li><b>项目描述：</b>从零实现一个工具调用型智能体，覆盖「感知（检索）— 决策（规划）— 执行（工具调用）— 反思（再决策）」的完整闭环，工具通过 MCP 协议独立成 Server 进程，对外以 HTTP + SSE 提供服务。为深入理解机制，核心循环、上下文管理、错误恢复均<b>手写实现而非调用框架</b>，因此具备框架级的问题定位能力。</li>
+      <li><b>工具接入（MCP）：</b>按 MCP 协议实现独立 Server 进程，将工具能力以标准协议对外暴露，工具定义与实现只维护一份，本地直调与 MCP 两种接入方式共用——新增工具无需改动 Agent 核心逻辑。基于 stdio 单向传输的特性设计常驻会话适配器，解决跨任务调用导致的 cancel scope 异常。</li>
+      <li><b>RAG 检索：</b>自建检索链路——按文档语义结构<b>分块</b>（保证条款不被切断、每块带章节标题路径），<b>向量检索与 BM25 混合召回、RRF 融合排序</b>——纯向量对「5000 元」这类数字不敏感，纯 BM25 又抓不住口语化提问，二者互补。针对 12 个不含文档原词的口语化提问，命中率由关键词硬匹配的 58.3% 提升至 <b>100%</b>；检索延迟 6.7ms（numpy 矩阵运算实现，未引入向量数据库）。本地部署 bge 中文向量模型。</li>
+      <li><b>调用调度：</b>设计工具路由与参数校验层，处理模型返回的非法参数与幻觉工具名；对无依赖的工具调用做<b>并行执行</b>（asyncio.gather），实测 4 个工具并发下耗时由 805ms 降至 201ms，<b>降低约 75%</b>。</li>
+      <li><b>上下文管理：</b>实现两级上下文压缩——长工具结果保留首尾、压缩中段；超出预算时从最老轮次开始裁剪，并保证 tool_use 与 tool_result 始终成对出现（否则 API 直接报 400）。10 轮长文档检索对话下输入 token 由 26999 降至 17972（<b>降低 33.4%</b>），上下文占用由线性增长转为恒定。<b>用量估算</b>：编写 token 估算器并用 API 真实 usage 反推系数校准，误差由 −37% 收敛至 ±1.3%，使预算判断真实可用。</li>
+      <li><b>稳定性保障：</b>实现超时控制、指数退避重试与熔断降级三层机制。关键设计是<b>按故障类型选择性重试</b>——超时、连接中断等瞬时故障重试，参数非法、业务拒绝等永久错误立即放弃。<b>在 30% 随机失败 + 5% 超时注入下，工具成功率由 71.7% 提升至 95.8%（+24.1 个百分点）</b>，失败减少 85%，代价是下游调用量增加 44%；连续失败自动熔断，避免重试放大下游故障。</li>
+      <li><b>服务化与可观测性：</b>FastAPI 提供 HTTP 接口与 <b>SSE 流式输出</b>，实时推送模型正文与工具调用进度；实测首字节响应 231ms、完整回答 2713ms，<b>用户等待时间降低约 91%</b>。会话状态服务端维护并加锁串行化避免历史交错；全链路记录每轮 Thought / Action / Observation，含工具耗时、重试次数与失败原因，支撑成功率统计与问题定位。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">专业技能</div>
+  <div class="skill-line"><span class="k">编程语言</span>熟练使用 Python（异步编程 asyncio / async-await）；了解 Java / C 基础语法</div>
+  <div class="skill-line"><span class="k">Agent 开发</span>手写实现 ReAct 循环、Function Calling 编排与多工具调度；熟悉 MCP 协议接入与自定义 Server；掌握上下文管理与工具错误恢复</div>
+  <div class="skill-line"><span class="k">RAG</span>掌握检索链路：语义分块 / 向量检索 / BM25 / RRF 融合；具备本地向量模型（bge）部署与效果评测经验</div>
+  <div class="skill-line"><span class="k">LLM 应用</span>熟悉 LLM 的 Messages / Tools / Streaming 接口，具备多厂商适配经验（DeepSeek / Anthropic）</div>
+  <div class="skill-line"><span class="k">工程能力</span>FastAPI 接口开发、Pydantic 校验、SSE 流式响应；理解超时/重试/熔断与并发编排的工程实践</div>
+</div>
+
+<div class="section">
+  <div class="section-title">自我评价</div>
+  <ul>
+    <li>专注 LLM 与 Agent 方向，能独立完成从协议接入、检索链路、工具调度到服务化的完整实现，对工具调用与检索机制有实践层面的理解，习惯<b>用实测数据验证优化效果</b>而非凭直觉判断。</li>
+    <li>学习能力强，能快速跟进迭代频繁的 AI 生态；遇到问题习惯查阅官方文档定位根因，而非依赖现成答案。</li>
+    <li><span class="placeholder">【可补充：性格、团队协作、抗压能力等，1 句话即可，没有可删】</span></li>
+  </ul>
+</div>
+
+</body>
+</html>
